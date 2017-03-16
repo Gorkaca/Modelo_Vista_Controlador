@@ -1,0 +1,30 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class Conector {
+
+	protected Connection conexion;
+
+	Conector(String zoo) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			this.conexion = DriverManager.getConnection("jdbc:mysql://config.java/" + "zoo", "root", "");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public Connection getConexion() {
+		return conexion;
+	}
+
+	public void setConexion(Connection conexion) {
+		this.conexion = conexion;
+	}
+
+}
